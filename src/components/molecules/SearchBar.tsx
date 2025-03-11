@@ -44,7 +44,7 @@ const SearchBar = () => {
                 isFocused || inputValue ? 'bg-white' : 'bg-gray-200'
             )}
         >
-            <button className="mx-2.5 cursor-pointer" onClick={handleSearch}>
+            <button className="mx-2.5 cursor-pointer" onClick={handleSearch} aria-label="Search">
                 <IoIosSearch className="text-2xl" />
             </button>
             <input
@@ -56,9 +56,10 @@ const SearchBar = () => {
                 onBlur={() => setIsFocused(false)}
                 onKeyDown={handleKeyDown}
                 placeholder={isFocused ? 'Input breed name to search' : 'Click to search'}
+                aria-label="Search for dog breeds"
             />
             {inputValue && (
-                <button className="mx-2.5 cursor-pointer" onClick={handleClearClick}>
+                <button className="mx-2.5 cursor-pointer" onClick={handleClearClick} aria-label="Clear search">
                     <MdClear className="text-2xl" />
                 </button>
             )}
