@@ -16,7 +16,7 @@ const BreedItem = ({ breed }: BreedItemProps) => {
                     className="rounded-full h-[60px] aspect-square"
                     width={60}
                     height={60}
-                    alt={breed?.breedName}
+                    alt={`Photo of ${breed?.breedName}`}
                 />
                 <p>{breed?.breedName}</p>
             </div>
