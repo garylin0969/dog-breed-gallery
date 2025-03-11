@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { ChangeEvent, useCallback, useState, KeyboardEvent } from 'react';
+import { ChangeEvent, useState, KeyboardEvent } from 'react';
 import { IoIosSearch } from 'react-icons/io';
 import { MdClear } from 'react-icons/md';
 import cn from '@/lib/cn';
@@ -23,13 +23,13 @@ const SearchBar = () => {
         setInputValue('');
     };
 
-    const handleSearch = useCallback(() => {
+    const handleSearch = () => {
         if (inputValue.trim()) {
             router.push(`/?search=${encodeURIComponent(inputValue.trim())}`);
         } else {
             router.push('/');
         }
-    }, [inputValue, router]);
+    };
 
     const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
