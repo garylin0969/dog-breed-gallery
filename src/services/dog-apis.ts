@@ -25,7 +25,9 @@ const transformBreeds = (obj: Record<string, string[]>) => {
 
 // 獲取指定品種的隨機圖片
 const getRandomImage = async (breed: string) => {
-    const response = await fetch(`${API_BASE_URL}/breed/${breed?.toLowerCase()}/images/random`);
+    const response = await fetch(`${API_BASE_URL}/breed/${breed?.toLowerCase()}/images/random`, {
+        cache: 'force-cache',
+    });
     const data = await response.json();
 
     if (data.status === 'success') {
@@ -37,7 +39,9 @@ const getRandomImage = async (breed: string) => {
 
 // 獲取所有狗狗品種
 export const getAllBreeds = async () => {
-    const response = await fetch(`${API_BASE_URL}/breeds/list/all`);
+    const response = await fetch(`${API_BASE_URL}/breeds/list/all`, {
+        cache: 'force-cache',
+    });
     const data = await response.json();
 
     const breeds = transformBreeds(data.message);
