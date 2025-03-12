@@ -2,7 +2,7 @@
 
 這是一個使用 Next.js 建構的網頁應用程式，透過 [Dog CEO API](https://dog.ceo/dog-api/) 展示各種狗狗品種。瀏覽各種狗狗品種、搜尋特定品種。
 
-![狗狗品種圖庫截圖](/home-screenshot.jpg)
+![狗狗品種圖庫截圖](public/home-screenshot.jpg)
 
 ## 功能特色
 
