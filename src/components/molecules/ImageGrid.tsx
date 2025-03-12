@@ -46,7 +46,7 @@ const ImageGrid = ({ images, altPrefix, fallback }: ImageGridProps) => {
                         alt={`${altPrefix} ${index + 1}`}
                         width={300}
                         height={300}
-                        priority
+                        priority={index < 12}
                         onClick={() => {
                             setSelectedImageIndex(index);
                             setIsModalOpen(true);

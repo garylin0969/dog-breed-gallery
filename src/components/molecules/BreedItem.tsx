@@ -9,9 +9,10 @@ interface Breed {
 
 interface BreedItemProps {
     breed: Breed;
+    priority: boolean;
 }
 
-const BreedItem = ({ breed }: BreedItemProps) => {
+const BreedItem = ({ breed, priority }: BreedItemProps) => {
     const { breedName, breedImage } = breed;
 
     return (
@@ -24,7 +25,7 @@ const BreedItem = ({ breed }: BreedItemProps) => {
                     height={60}
                     alt={`Photo of ${breedName}`}
                     sizes="60px"
-                    priority
+                    priority={priority}
                 />
                 <p>{breedName}</p>
             </div>

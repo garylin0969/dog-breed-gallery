@@ -14,9 +14,9 @@ const BreedList = async ({ searchQuery }: BreedListProps) => {
 
     return (
         <ul>
-            {filteredBreeds?.map((breed) => (
+            {filteredBreeds?.map((breed, index) => (
                 <li key={breed.breedName} className="border-b-2 border-gray-200 hover:bg-gray-200">
-                    <BreedItem breed={breed} />
+                    <BreedItem breed={breed} priority={index < 12} />
                 </li>
             ))}
         </ul>
