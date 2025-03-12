@@ -8,7 +8,12 @@ interface HeaderProps {
 
 const Header = ({ className, children }: HeaderProps) => {
     return (
-        <header className={cn('h-[50px] w-full bg-[#C4C4C4]', className)}>
+        <header
+            className={cn(
+                'sticky top-0 z-10 h-[50px] w-full bg-slate-900/70 font-serif shadow backdrop-blur-md',
+                className
+            )}
+        >
             <div className="h-full md:mx-auto md:max-w-6xl">{children}</div>
         </header>
     );
