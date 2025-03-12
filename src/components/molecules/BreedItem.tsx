@@ -26,6 +26,8 @@ const BreedItem = ({ breed, priority }: BreedItemProps) => {
                     sizes="60px"
                     alt={`Photo of ${breedName}`}
                     priority={priority}
+                    quality={20}
+                    placeholder="empty"
                 />
                 <p>{breedName}</p>
             </div>

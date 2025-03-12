@@ -54,6 +54,8 @@ const ImageGrid = ({ images, altPrefix, fallback }: ImageGridProps) => {
                             sizes="(max-width: 768px) 256px, 384px"
                             alt={`${altPrefix} ${index + 1}`}
                             priority={index < 12}
+                            quality={20}
+                            placeholder="empty"
                         />
                     </div>
                 ))}
