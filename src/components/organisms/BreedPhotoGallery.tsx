@@ -1,14 +1,8 @@
 import { Suspense } from 'react';
-import ImageGrid from './ImageGrid';
+import ImageGrid from '@/components/molecules/ImageGrid';
 import SkeletonGrid from '@/components/molecules/SkeletonGrid';
 import ErrorMessage from '@/components/molecules/ErrorMessage';
 
-/**
- * 品種照片集
- *
- * 用於顯示特定品種的照片集
- * 包含照片和加載狀態
- */
 interface BreedPhotoGalleryProps {
     breedName: string;
     images: string[];

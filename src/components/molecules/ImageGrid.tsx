@@ -13,43 +13,43 @@ interface ImageGridProps {
 }
 
 const ImageGrid = ({ images, altPrefix, fallback }: ImageGridProps) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-    if (images?.length === 0) {
-        return fallback ? (
-            fallback
-        ) : (
-            <ErrorMessage
-                title="無法獲取圖片"
-                description="可能是該品種名稱格式不正確或 API 暫時無法訪問。請稍後再試。"
-            />
+    if (!images?.length) {
+        return (
+            fallback || (
+                <ErrorMessage
+                    title="無法獲取圖片"
+                    description="可能是該品種名稱格式不正確或 API 暫時無法訪問。請稍後再試。"
+                />
+            )
         );
     }
 
     return (
         <>
-            <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <Carousel
                     images={images}
                     altPrefix={altPrefix}
-                    currentIndex={currentIndex}
-                    setCurrentIndex={setCurrentIndex}
+                    currentIndex={selectedImageIndex}
+                    setCurrentIndex={setSelectedImageIndex}
                 />
             </Modal>
             <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
                 {images.map((imageUrl, index) => (
                     <Image
                         className="rounded-lg w-full aspect-square cursor-pointer"
-                        key={imageUrl}
+                        key={`grid-image-${imageUrl}`}
                         src={imageUrl}
                         alt={`${altPrefix} ${index + 1}`}
                         width={300}
                         height={300}
                         priority
                         onClick={() => {
-                            setCurrentIndex(index);
-                            setIsOpen(true);
+                            setSelectedImageIndex(index);
+                            setIsModalOpen(true);
                         }}
                     />
                 ))}

@@ -2,7 +2,7 @@ import SkeletonGrid from '@/components/molecules/SkeletonGrid';
 import Container from '@/components/atoms/Container';
 import BreedHeader from '@/components/molecules/BreedHeader';
 import Header from '@/components/organisms/Header';
-import { IMAGE_COUNT } from './page';
+import { BREED_IMAGE_COUNT } from './page';
 
 /**
  * 品種詳情頁面的加載狀態
@@ -18,7 +18,7 @@ const BreedLoading = () => {
             </Header>
             <Container>
                 <div className="p-4">
-                    <SkeletonGrid count={IMAGE_COUNT} />
+                    <SkeletonGrid count={BREED_IMAGE_COUNT} />
                 </div>
             </Container>
         </>

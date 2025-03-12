@@ -12,13 +12,13 @@ interface CarouselProps {
 }
 
 const Carousel = ({ images, altPrefix, currentIndex, setCurrentIndex }: CarouselProps) => {
-    const goToPrevious = () => {
+    const navigateToPrevious = () => {
         const isFirstSlide = currentIndex === 0;
         const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
         setCurrentIndex(newIndex);
     };
 
-    const goToNext = () => {
+    const navigateToNext = () => {
         const isLastSlide = currentIndex === images.length - 1;
         const newIndex = isLastSlide ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);
@@ -27,7 +27,7 @@ const Carousel = ({ images, altPrefix, currentIndex, setCurrentIndex }: Carousel
     return (
         <div className="w-full h-full">
             <div className="h-[calc(100%-112px)] flex justify-around items-center">
-                <button className="cursor-pointer" onClick={goToPrevious}>
+                <button className="cursor-pointer" onClick={navigateToPrevious} aria-label="Previous image">
                     <FaChevronLeft className="text-white text-2xl md:text-4xl" />
                 </button>
                 <div className="w-64 h-64 md:w-96 md:h-96 flex overflow-hidden">
@@ -35,20 +35,20 @@ const Carousel = ({ images, altPrefix, currentIndex, setCurrentIndex }: Carousel
                         className="flex transition-transform duration-300"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
                     >
-                        {images?.map((image, index) => (
+                        {images?.map((imageUrl, index) => (
                             <Image
-                                key={index}
-                                src={image}
+                                key={`carousel-image-${index}`}
+                                src={imageUrl}
                                 alt={`${altPrefix} ${index + 1}`}
                                 className="min-w-full min-h-full"
-                                width={384} // 對應 md:w-96
-                                height={384} // 對應 md:h-96
+                                width={384}
+                                height={384}
                                 sizes="(max-width: 768px) 256px, 384px"
                             />
                         ))}
                     </div>
                 </div>
-                <button className="cursor-pointer" onClick={goToNext}>
+                <button className="cursor-pointer" onClick={navigateToNext} aria-label="Next image">
                     <FaChevronRight className="text-white text-2xl md:text-4xl" />
                 </button>
             </div>
