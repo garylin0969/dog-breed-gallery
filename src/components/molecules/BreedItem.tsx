@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from '@/components/atoms/Image';
+import Image from 'next/image';
 import { memo } from 'react';
 
 interface Breed {
@@ -20,11 +20,11 @@ const BreedItem = ({ breed, priority }: BreedItemProps) => {
             <div className="h-20 w-full flex items-center gap-5 px-5">
                 <Image
                     src={breedImage}
-                    className="rounded-full h-[60px] w-[60px]"
+                    className="rounded-full object-cover aspect-square h-[60px] w-[60px]"
                     width={60}
                     height={60}
-                    alt={`Photo of ${breedName}`}
                     sizes="60px"
+                    alt={`Photo of ${breedName}`}
                     priority={priority}
                 />
                 <p>{breedName}</p>

@@ -1,7 +1,7 @@
 'use client';
 
-import Image from '@/components/atoms/Image';
 import { ReactNode, useState } from 'react';
+import Image from 'next/image';
 import ErrorMessage from '@/components/molecules/ErrorMessage';
 import Modal from '@/components/molecules/Modal';
 import Carousel from '@/components/molecules/Carousel';
@@ -39,19 +39,23 @@ const ImageGrid = ({ images, altPrefix, fallback }: ImageGridProps) => {
             </Modal>
             <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
                 {images.map((imageUrl, index) => (
-                    <Image
-                        className="rounded-lg w-full aspect-square cursor-pointer"
+                    <div
                         key={`grid-image-${imageUrl}`}
-                        src={imageUrl}
-                        alt={`${altPrefix} ${index + 1}`}
-                        width={300}
-                        height={300}
-                        priority={index < 12}
+                        className="relative rounded-lg aspect-square overflow-hidden cursor-pointer shadow-lg"
                         onClick={() => {
                             setSelectedImageIndex(index);
                             setIsModalOpen(true);
                         }}
-                    />
+                    >
+                        <Image
+                            className="object-cover transition-transform duration-300 hover:scale-110"
+                            src={imageUrl}
+                            fill
+                            sizes="(max-width: 768px) 256px, 384px"
+                            alt={`${altPrefix} ${index + 1}`}
+                            priority={index < 12}
+                        />
+                    </div>
                 ))}
             </div>
         </>

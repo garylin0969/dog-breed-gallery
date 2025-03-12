@@ -1,6 +1,6 @@
 'use client';
 
-import Image from '@/components/atoms/Image';
+import Image from 'next/image';
 import { Dispatch, SetStateAction } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
@@ -38,9 +38,9 @@ const Carousel = ({ images, altPrefix, currentIndex, setCurrentIndex }: Carousel
                         {images?.map((imageUrl, index) => (
                             <Image
                                 key={`carousel-image-${index}`}
+                                className="object-cover aspect-square w-64 md:w-96"
                                 src={imageUrl}
                                 alt={`${altPrefix} ${index + 1}`}
-                                className="min-w-full min-h-full"
                                 width={384}
                                 height={384}
                                 sizes="(max-width: 768px) 256px, 384px"
