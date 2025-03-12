@@ -15,7 +15,7 @@ const BreedList = async ({ searchQuery }: BreedListProps) => {
     return (
         <ul>
             {filteredBreeds?.map((breed) => (
-                <li key={breed.breedName} className="border-b-2 border-gray-200">
+                <li key={breed.breedName} className="border-b-2 border-gray-200 hover:bg-gray-200">
                     <BreedItem breed={breed} />
                 </li>
             ))}
