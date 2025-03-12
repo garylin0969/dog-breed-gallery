@@ -8,9 +8,6 @@ const nextConfig: NextConfig = {
         formats: ['image/webp'],
         minimumCacheTTL: 86400, // 圖片緩存24小時
     },
-    experimental: {
-        optimizeCss: true, // 優化CSS
-    },
 };
 
 export default nextConfig;
