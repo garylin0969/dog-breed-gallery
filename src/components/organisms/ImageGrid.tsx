@@ -1,5 +1,6 @@
 import Image from '@/components/atoms/Image';
 import { ReactNode } from 'react';
+import ErrorMessage from '@/components/molecules/ErrorMessage';
 
 interface ImageGridProps {
     images: string[];
@@ -7,36 +8,29 @@ interface ImageGridProps {
     fallback?: ReactNode;
 }
 
-/**
- * 圖片網格組件
- *
- * 用於顯示多張圖片的網格布局
- * 支持響應式設計，在不同屏幕尺寸下顯示不同數量的列
- */
 const ImageGrid = ({ images, altPrefix, fallback }: ImageGridProps) => {
-    if (images.length === 0) {
+    if (images?.length === 0) {
         return fallback ? (
-            <>{fallback}</>
+            fallback
         ) : (
-            <div className="text-center py-8">
-                <p className="text-lg text-gray-600 mb-4">無法獲取圖片</p>
-                <p className="text-sm text-gray-500">可能是資源暫時無法訪問。請稍後再試。</p>
-            </div>
+            <ErrorMessage
+                title="無法獲取圖片"
+                description="可能是該品種名稱格式不正確或 API 暫時無法訪問。請稍後再試。"
+            />
         );
     }
 
     return (
         <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
             {images.map((imageUrl, index) => (
-                <div key={index} className="overflow-hidden rounded-lg">
-                    <Image
-                        src={imageUrl}
-                        alt={`${altPrefix} ${index + 1}`}
-                        width={300}
-                        height={300}
-                        className="w-full aspect-square object-cover hover:scale-110 transition-transform duration-300"
-                    />
-                </div>
+                <Image
+                    key={imageUrl}
+                    src={imageUrl}
+                    alt={`${altPrefix} ${index + 1}`}
+                    width={300}
+                    height={300}
+                    className="rounded-lg w-full aspect-square"
+                />
             ))}
         </div>
     );
