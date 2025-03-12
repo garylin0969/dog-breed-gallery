@@ -2,7 +2,7 @@ import cn from '@/lib/cn';
 
 interface ContainerProps {
     className?: string;
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 const Container = ({ className, children, ...props }: ContainerProps) => {
