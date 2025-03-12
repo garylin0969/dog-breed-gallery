@@ -7,7 +7,7 @@ interface BreedHeaderProps {
 
 const BreedHeader = ({ breedName }: BreedHeaderProps) => {
     return (
-        <div className="flex items-center h-full">
+        <div className="flex items-center h-full text-white">
             {/* 返回按鈕 */}
             <Link href="/" aria-label="Back to Home" title="Back to Home" className="flex items-center justify-center">
                 <IoIosArrowBack className="text-2xl" />
