@@ -15,7 +15,7 @@ const BreedItem = ({ breed }: BreedItemProps) => {
     const { breedName, breedImage } = breed;
 
     return (
-        <Link href={`/breed/${encodeURIComponent(breedName.toLowerCase())}`}>
+        <Link href={`/breed/${encodeURIComponent(breedName)}`}>
             <div className="min-h-20 w-full flex items-center gap-5 px-5">
                 <Image
                     src={breedImage}
