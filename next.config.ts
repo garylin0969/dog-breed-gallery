@@ -3,7 +3,14 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
     /* config options here */
     images: {
-        domains: ['images.dog.ceo'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.dog.ceo',
+                port: '',
+                pathname: '/**',
+            },
+        ],
         deviceSizes: [768],
         formats: ['image/webp'],
         minimumCacheTTL: 86400, // 圖片緩存24小時
