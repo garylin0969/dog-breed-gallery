@@ -9,7 +9,7 @@ const BreedHeader = ({ breedName }: BreedHeaderProps) => {
     return (
         <>
             {/* 返回按鈕 */}
-            <Link href="/">
+            <Link href="/" aria-label="Back to Home" title="Back to Home" className="flex items-center justify-center">
                 <IoIosArrowBack className="text-2xl" />
             </Link>
             {/* 品種名稱 */}
