@@ -59,7 +59,8 @@ const nextConfig: NextConfig = {
          * 圖片質量選項
          * 降低圖片質量以減小檔案大小，加快載入速度
          */
-        qualities: [30, 50], // 大幅降低質量以提高速度
+        // 大幅降低質量以提高速度
+        qualities: [20],
 
         /**
          * 允許處理 SVG 圖片
