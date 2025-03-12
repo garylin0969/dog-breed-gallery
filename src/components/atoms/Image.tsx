@@ -11,11 +11,12 @@ interface ImageProps {
     height?: number;
     className?: string;
     priority?: boolean;
+    onClick?: () => void;
 }
 
-const Image = ({ src, alt, width, height, className = '', priority = false }: ImageProps) => {
+const Image = ({ src, alt, width, height, className = '', priority = false, onClick }: ImageProps) => {
     return (
-        <div className={cn('relative overflow-hidden', className)}>
+        <div className={cn('overflow-hidden', className)}>
             <NextImage
                 src={src || fallbackSrc}
                 alt={alt}
@@ -23,6 +24,7 @@ const Image = ({ src, alt, width, height, className = '', priority = false }: Im
                 height={height}
                 priority={priority || !src}
                 className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
+                onClick={onClick}
             />
         </div>
     );
