@@ -89,14 +89,6 @@ const nextConfig: NextConfig = {
      * 在開發環境中啟用額外的檢查和警告
      */
     reactStrictMode: true,
-
-    /**
-     * 優化 LCP 的實驗性功能
-     */
-    experimental: {
-        optimizeCss: true, // 優化 CSS
-        optimizeServerReact: true, // 優化服務器端 React 渲染
-    },
 };
 
 export default nextConfig;
