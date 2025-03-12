@@ -25,12 +25,6 @@ const nextConfig: NextConfig = {
                 port: '',
                 pathname: '/**', // 允許任何路徑
             },
-            {
-                protocol: 'https',
-                hostname: 'placehold.co', // 預設圖片的域名
-                port: '',
-                pathname: '/**',
-            },
         ],
 
         /**
@@ -54,13 +48,6 @@ const nextConfig: NextConfig = {
          * 增加緩存時間，減少重新處理圖片的頻率
          */
         minimumCacheTTL: 604800, // 7天
-
-        /**
-         * 圖片質量選項
-         * 降低圖片質量以減小檔案大小，加快載入速度
-         */
-        // 大幅降低質量以提高速度
-        qualities: [20],
 
         /**
          * 允許處理 SVG 圖片
@@ -95,11 +82,6 @@ const nextConfig: NextConfig = {
      * 在開發環境中啟用額外的檢查和警告
      */
     reactStrictMode: true,
-
-    /**
-     * 靜態頁面生成超時時間（秒）
-     */
-    staticPageGenerationTimeout: 60,
 };
 
 export default nextConfig;
