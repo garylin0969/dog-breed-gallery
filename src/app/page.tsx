@@ -15,7 +15,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
     return (
         <>
-            <Header>
+            <Header className="px-2.5 py-[9px]">
                 <SearchBar />
             </Header>
             <Container>
