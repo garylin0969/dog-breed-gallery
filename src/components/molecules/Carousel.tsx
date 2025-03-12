@@ -30,7 +30,7 @@ const Carousel = ({ images, altPrefix, currentIndex, setCurrentIndex }: Carousel
                 <button className="cursor-pointer" onClick={goToPrevious}>
                     <FaChevronLeft className="text-white text-2xl md:text-4xl" />
                 </button>
-                <div className="w-64 h-64 flex overflow-hidden">
+                <div className="w-64 h-64 md:w-96 md:h-96 flex overflow-hidden">
                     <div
                         className="flex transition-transform duration-300"
                         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
@@ -41,8 +41,9 @@ const Carousel = ({ images, altPrefix, currentIndex, setCurrentIndex }: Carousel
                                 src={image}
                                 alt={`${altPrefix} ${index + 1}`}
                                 className="min-w-full min-h-full"
-                                width={256}
-                                height={256}
+                                width={384} // 對應 md:w-96
+                                height={384} // 對應 md:h-96
+                                sizes="(max-width: 768px) 256px, 384px"
                             />
                         ))}
                     </div>
