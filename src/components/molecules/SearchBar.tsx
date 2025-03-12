@@ -39,8 +39,7 @@ const SearchBar = () => {
     // 清除輸入內容並導航到首頁
     const handleClearClick = useCallback(() => {
         setInputValue('');
-        router.push('/');
-    }, [router]);
+    }, []);
 
     // 處理搜索操作的回調函數
     // 如果有輸入內容，則導航到帶有搜索參數的 URL
