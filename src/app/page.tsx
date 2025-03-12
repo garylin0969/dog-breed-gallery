@@ -24,7 +24,8 @@ export default async function Home({ searchParams }: HomeProps) {
                 <SearchBar />
             </Header>
             <Container>
-                <BreedList searchQuery={decodeURIComponent(search || '')} />
+                <h1 className="sr-only">Dog Breed Gallery</h1>
+                <BreedList searchQuery={search ? decodeURIComponent(search) : ''} />
             </Container>
         </>
     );
