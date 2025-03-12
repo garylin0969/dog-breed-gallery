@@ -1,6 +1,8 @@
+import { Suspense } from 'react';
 import Header from '@/components/organisms/Header';
 import SearchBar from '@/components/molecules/SearchBar';
 import Container from '@/components/atoms/Container';
+import LoadingBreedList from '@/components/organisms/LoadingBreedList';
 import BreedList from '@/components/organisms/BreedList';
 
 interface HomeProps {
@@ -17,7 +19,9 @@ export default async function Home({ searchParams }: HomeProps) {
                 <SearchBar />
             </Header>
             <Container>
-                <BreedList searchQuery={search} />
+                <Suspense fallback={<LoadingBreedList />}>
+                    <BreedList searchQuery={search} />
+                </Suspense>
             </Container>
         </>
     );
