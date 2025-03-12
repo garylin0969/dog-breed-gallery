@@ -71,7 +71,7 @@ const SearchBar = () => {
         // 根據焦點狀態或輸入內容決定背景顏色
         <div
             className={cn(
-                'min-h-8 w-full grid grid-cols-[auto_1fr_auto] items-center',
+                'min-h-8 w-full grid grid-cols-[auto_1fr_auto] items-center rounded-2xl',
                 isFocused || inputValue ? 'bg-white' : 'bg-gray-200'
             )}
         >
