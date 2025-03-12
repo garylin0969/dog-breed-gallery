@@ -32,9 +32,13 @@ const nextConfig: NextConfig = {
          * 減少斷點數量，專注於小尺寸圖片以加快載入
          * 優化目的：減少圖片尺寸，提高載入速度
          */
-        deviceSizes: [320, 640, 960],
+        deviceSizes: [320, 640, 1080],
 
-        imageSizes: [],
+        /**
+         * 圖片尺寸斷點
+         * 針對小型圖片（如頭像）優化
+         */
+        imageSizes: [60],
 
         /**
          * 支援的圖片格式
@@ -82,6 +86,14 @@ const nextConfig: NextConfig = {
      * 在開發環境中啟用額外的檢查和警告
      */
     reactStrictMode: true,
+
+    /**
+     * 優化 LCP 的實驗性功能
+     */
+    experimental: {
+        optimizeCss: true, // 優化 CSS
+        optimizeServerReact: true, // 優化服務器端 React 渲染
+    },
 };
 
 export default nextConfig;
