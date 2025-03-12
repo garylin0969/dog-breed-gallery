@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
             },
         ],
         deviceSizes: [768],
+        imageSizes: [],
         formats: ['image/webp'],
         minimumCacheTTL: 86400, // 圖片緩存24小時
     },
