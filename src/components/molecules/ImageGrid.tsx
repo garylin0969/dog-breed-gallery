@@ -55,6 +55,7 @@ const ImageGrid = ({ images, altPrefix, fallback }: ImageGridProps) => {
                             alt={`${altPrefix} ${index + 1}`}
                             priority={index < 12}
                             quality={20}
+                            loading={index < 12 ? 'eager' : 'lazy'}
                             placeholder="empty"
                         />
                     </div>
