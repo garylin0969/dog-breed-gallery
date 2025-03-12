@@ -21,7 +21,7 @@ const Image = ({ src, alt, width, height, className = '', ...props }: ImageProps
                 width={width}
                 height={height}
                 priority={!src}
-                className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
+                className="object-cover w-full h-full transition-transform duration-300 hover:scale-110"
                 {...props}
             />
         </div>
