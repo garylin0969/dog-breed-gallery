@@ -27,7 +27,7 @@ const BreedPage = async ({ params }: BreedPageProps) => {
 
     return (
         <>
-            <Header className="px-4 md:px-0">
+            <Header className="px-4">
                 <BreedHeader breedName={breedName} />
             </Header>
             <Container>
