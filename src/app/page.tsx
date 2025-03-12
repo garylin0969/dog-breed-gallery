@@ -20,7 +20,7 @@ export default async function Home({ searchParams }: HomeProps) {
             </Header>
             <Container>
                 <Suspense fallback={<LoadingBreedList />}>
-                    <BreedList searchQuery={search} />
+                    <BreedList searchQuery={decodeURIComponent(search || '')} />
                 </Suspense>
             </Container>
         </>
