@@ -11,7 +11,7 @@ const BreedLoading = () => {
             </Header>
             <Container>
                 <div className="p-4">
-                    <SkeletonGrid count={6} />
+                    <SkeletonGrid count={12} />
                 </div>
             </Container>
         </>
