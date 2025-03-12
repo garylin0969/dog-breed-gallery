@@ -24,12 +24,13 @@ const ImageGrid = ({ images, altPrefix, fallback }: ImageGridProps) => {
         <div className="grid grid-cols-3 md:grid-cols-4 gap-4">
             {images.map((imageUrl, index) => (
                 <Image
+                    className="rounded-lg w-full aspect-square"
                     key={imageUrl}
                     src={imageUrl}
                     alt={`${altPrefix} ${index + 1}`}
                     width={300}
                     height={300}
-                    className="rounded-lg w-full aspect-square"
+                    priority
                 />
             ))}
         </div>
