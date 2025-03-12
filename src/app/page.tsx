@@ -3,12 +3,15 @@ import SearchBar from '@/components/molecules/SearchBar';
 import Container from '@/components/atoms/Container';
 import BreedList from '@/components/organisms/BreedList';
 import { Suspense } from 'react';
+import LoadingBreedList from '@/components/organisms/LoadingBreedList';
 
-type SearchParams = Promise<{ [key: string]: string | undefined }>;
+interface HomeProps {
+    searchParams: Promise<{ [key: string]: string | undefined }>;
+}
 
-export default async function Home(props: { searchParams: SearchParams }) {
-    const searchParams = await props.searchParams;
-    const { search } = searchParams;
+export default async function Home({ searchParams }: HomeProps) {
+    const params = await searchParams;
+    const { search } = params;
 
     return (
         <>
@@ -16,7 +19,7 @@ export default async function Home(props: { searchParams: SearchParams }) {
                 <SearchBar />
             </Header>
             <Container>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<LoadingBreedList />}>
                     <BreedList searchQuery={search} />
                 </Suspense>
             </Container>
