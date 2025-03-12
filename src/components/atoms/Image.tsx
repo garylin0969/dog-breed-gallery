@@ -20,6 +20,7 @@ const Image = ({ src, alt, width, height, className = '', ...props }: ImageProps
                 alt={alt}
                 width={width}
                 height={height}
+                priority={!src}
                 className="object-cover w-full h-full transition-transform duration-300 hover:scale-105"
                 {...props}
             />
