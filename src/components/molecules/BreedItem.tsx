@@ -19,7 +19,7 @@ const BreedItem = ({ breed }: BreedItemProps) => {
             <div className="h-20 w-full flex items-center gap-5 px-5">
                 <Image
                     src={breedImage}
-                    className="rounded-full h-[60px] aspect-square"
+                    className="rounded-full h-[60px] w-[60px]"
                     width={60}
                     height={60}
                     alt={`Photo of ${breedName}`}
