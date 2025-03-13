@@ -1,23 +1,13 @@
 import type { NextConfig } from 'next';
 
-/**
- * Next.js 配置文件
- * 這裡的配置主要用於優化圖片處理、提高 LCP (Largest Contentful Paint) 性能
- * 以及其他性能優化設置
- * 優化重點：圖片載入速度優先於品質
- */
+// 優化重點：圖片載入速度優先於品質
 const nextConfig: NextConfig = {
-    /* 主要配置選項 */
-
     /**
      * 圖片優化配置
      * 針對最快載入速度進行優化，犧牲部分圖片品質
      */
     images: {
-        /**
-         * 遠端圖片模式配置
-         * 定義哪些外部域名的圖片可以被 Next.js 的圖片優化功能處理
-         */
+        // 定義哪些外部圖片可以被 Next.js 優化處理
         remotePatterns: [
             {
                 protocol: 'https',
@@ -29,7 +19,6 @@ const nextConfig: NextConfig = {
 
         /**
          * 裝置尺寸斷點
-         * 減少斷點數量，專注於小尺寸圖片以加快載入
          * 只保留一個關鍵尺寸，完全匹配最大照片 //輪播牆
          * 優化目的：減少圖片尺寸，提高載入速度
          */
@@ -45,8 +34,8 @@ const nextConfig: NextConfig = {
 
         /**
          * 支援的圖片格式
-         * 優先使用 WebP 格式，因為編碼速度快於 AVIF
-         * 優化目的：加快圖片處理速度
+         * 優先使用 WebP 格式，因為速度快
+         * 加快圖片處理速度
          */
         formats: ['image/webp'],
 
@@ -65,11 +54,6 @@ const nextConfig: NextConfig = {
          * 內容處置類型
          */
         contentDispositionType: 'inline', // 改為 inline 以便直接顯示
-
-        /**
-         * 禁用靜態圖片優化
-         */
-        disableStaticImages: false,
     },
 
     /**
