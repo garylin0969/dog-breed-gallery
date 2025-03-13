@@ -18,10 +18,7 @@ const ImageGrid = ({ images, altPrefix }: ImageGridProps) => {
 
     if (!images?.length) {
         return (
-            <ErrorMessage
-                title="無法獲取圖片"
-                description="可能是該品種名稱格式不正確或 API 暫時無法訪問。請稍後再試。"
-            />
+            <ErrorMessage title="無法獲取圖片" description="可能是名稱格式不正確或 API 暫時無法訪問。請稍後再試。" />
         );
     }
 
