@@ -73,6 +73,13 @@ const nextConfig: NextConfig = {
      * 在開發環境中啟用額外的檢查和警告
      */
     reactStrictMode: true,
+
+    // API Cache日誌，開發時啟用
+    logging: {
+        fetches: {
+            fullUrl: true,
+        },
+    },
 };
 
 export default nextConfig;
