@@ -12,6 +12,7 @@ interface ImageGridProps {
     fallback?: ReactNode;
 }
 
+// 圖片牆
 const ImageGrid = ({ images, altPrefix, fallback }: ImageGridProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);

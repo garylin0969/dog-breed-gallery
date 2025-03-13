@@ -9,6 +9,7 @@ interface BreedPhotoGalleryProps {
     count?: number;
 }
 
+// 狗狗照片牆
 const BreedPhotoGallery = ({ breedName, images, count = 8 }: BreedPhotoGalleryProps) => {
     return (
         <Suspense fallback={<SkeletonGrid count={count} />}>

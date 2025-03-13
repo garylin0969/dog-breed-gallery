@@ -5,6 +5,7 @@ interface BreedListProps {
     searchQuery?: string;
 }
 
+// 狗狗列表
 const BreedList = async ({ searchQuery }: BreedListProps) => {
     const breeds = await getAllBreeds();
 

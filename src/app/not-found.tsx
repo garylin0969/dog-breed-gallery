@@ -1,5 +1,5 @@
-import Header from '@/components/organisms/Header';
 import Link from 'next/link';
+import Header from '@/components/organisms/Header';
 
 const NotFound = () => {
     return (

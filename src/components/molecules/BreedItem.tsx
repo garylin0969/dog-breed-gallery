@@ -12,6 +12,7 @@ interface BreedItemProps {
     priority: boolean;
 }
 
+// 狗狗列表項目
 const BreedItem = ({ breed, priority }: BreedItemProps) => {
     const { breedName, breedImage } = breed;
 

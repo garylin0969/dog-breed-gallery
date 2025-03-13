@@ -1,15 +1,10 @@
-/**
- * 錯誤信息組件
- *
- * 用於顯示友好的錯誤信息
- * 支持主要錯誤信息和詳細說明
- */
 interface ErrorMessageProps {
     title: string;
     description?: string;
     className?: string;
 }
 
+// 錯誤信息
 const ErrorMessage = ({ title, description, className = '' }: ErrorMessageProps) => {
     return (
         <div className={`text-center py-8 ${className}`}>

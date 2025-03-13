@@ -9,6 +9,7 @@ interface ModalProps {
     onClose?: () => void;
 }
 
+// 彈出視窗背景
 const Modal = ({ children, isOpen = false, onClose }: ModalProps) => {
     if (!isOpen) return null;
 

@@ -11,14 +11,19 @@ interface CarouselProps {
     setCurrentIndex: Dispatch<SetStateAction<number>>;
 }
 
+// 輪播牆
 const Carousel = ({ images, altPrefix, currentIndex, setCurrentIndex }: CarouselProps) => {
+    // 前往上一張圖片
     const navigateToPrevious = () => {
+        // 如果是第一張圖片，則前往最後一張圖片
         const isFirstSlide = currentIndex === 0;
         const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
         setCurrentIndex(newIndex);
     };
 
+    // 前往下一張圖片
     const navigateToNext = () => {
+        // 如果是最後一張圖片，則前往第一張圖片
         const isLastSlide = currentIndex === images.length - 1;
         const newIndex = isLastSlide ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);

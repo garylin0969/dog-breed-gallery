@@ -4,7 +4,7 @@ import SearchBar from '@/components/molecules/SearchBar';
 import Container from '@/components/atoms/Container';
 import LoadingBreedList from '@/components/organisms/LoadingBreedList';
 
-// 動態導入 BreedList 組件，但預加載它
+// 動態導入 BreedList ，但預加載它
 const BreedList = dynamic(() => import('@/components/organisms/BreedList'), {
     loading: () => <LoadingBreedList />,
     ssr: true,

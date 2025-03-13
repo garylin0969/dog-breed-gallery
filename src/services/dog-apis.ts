@@ -31,8 +31,8 @@ const parseBreedName = (breedName: string): BreedFormat => {
     } else {
         // 有子品種的情況：如 "Kelpie Australian" -> { main: "australian", sub: "kelpie" }
         // 子品種在前，主品種在後
-        const mainBreed = parts[parts.length - 1];
-        const subBreed = parts.slice(0, -1).join('-');
+        const mainBreed = parts[1];
+        const subBreed = parts[0];
         return { main: mainBreed, sub: subBreed };
     }
 };
