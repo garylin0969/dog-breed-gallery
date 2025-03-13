@@ -30,9 +30,9 @@ const SearchBar = () => {
         const trimmedValue = inputValue.trim();
         startTransition(() => {
             if (trimmedValue) {
-                router.push(`/?search=${encodeURIComponent(trimmedValue)}`);
+                router.push(`/?search=${encodeURIComponent(trimmedValue)}`, { scroll: false });
             } else {
-                router.push('/');
+                router.push('/', { scroll: false });
             }
         });
     }, [inputValue, router]);

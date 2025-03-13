@@ -17,7 +17,7 @@ const BreedItem = ({ breed, priority }: BreedItemProps) => {
     const { breedName, breedImage } = breed;
 
     return (
-        <Link href={`/breed/${encodeURIComponent(breedName)}`}>
+        <Link href={`/breed/${encodeURIComponent(breedName)}`} scroll={false}>
             <div className="h-20 w-full flex items-center gap-5 px-5">
                 <div className="relative h-[60px] w-[60px] rounded-full overflow-hidden">
                     <Image
