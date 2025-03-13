@@ -33,7 +33,7 @@
 1. 複製專案：
 
     ```bash
-    git clone https://github.com/yourusername/dog-breed-gallery.git
+    git clone https://github.com/garylin0969/dog-breed-gallery.git
     cd dog-breed-gallery
     ```
 
