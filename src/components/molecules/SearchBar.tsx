@@ -85,8 +85,9 @@ const SearchBar = () => {
 
             {/* 加載中，僅在搜尋進行中顯示 */}
             {isPending && (
-                <div className="mx-2.5">
+                <div className="mx-2.5 flex items-center gap-2">
                     <div className="h-5 w-5 border-2 border-gray-600 border-t-transparent rounded-full animate-spin" />
+                    <span className="text-sm text-gray-600">Searching...</span>
                 </div>
             )}
         </div>
