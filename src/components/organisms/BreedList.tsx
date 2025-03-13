@@ -1,5 +1,6 @@
 import { getAllBreeds } from '@/services/dog-apis';
-import BreedItem from '../molecules/BreedItem';
+import ErrorMessage from '@/components/molecules/ErrorMessage';
+import BreedItem from '@/components/molecules/BreedItem';
 
 interface BreedListProps {
     searchQuery?: string;
@@ -12,6 +13,15 @@ const BreedList = async ({ searchQuery }: BreedListProps) => {
     const filteredBreeds = searchQuery
         ? breeds.filter((breed) => breed?.breedName?.toLowerCase()?.includes(searchQuery?.toLowerCase()))
         : breeds;
+
+    if (!filteredBreeds?.length) {
+        return (
+            <ErrorMessage
+                title="無法獲取列表"
+                description="可能是該品種名稱格式不正確或 API 暫時無法訪問。請稍後再試。"
+            />
+        );
+    }
 
     return (
         <ul>
