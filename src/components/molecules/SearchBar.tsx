@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams, useRouter } from 'next/navigation';
-import { ChangeEvent, useState, KeyboardEvent, useCallback } from 'react';
+import { ChangeEvent, useState, KeyboardEvent, useCallback, useTransition } from 'react';
 import { IoIosSearch } from 'react-icons/io';
 import { MdClear } from 'react-icons/md';
 import cn from '@/lib/cn';
@@ -13,6 +13,7 @@ const SearchBar = () => {
     const search = searchParams.get('search');
     const [inputValue, setInputValue] = useState(search || '');
     const [isFocused, setIsFocused] = useState(false);
+    const [isPending, startTransition] = useTransition();
 
     // 使用 useCallback 優化性能，避免不必要的重新渲染
     const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
@@ -27,11 +28,13 @@ const SearchBar = () => {
     // 否則導航到首頁
     const handleSearch = useCallback(() => {
         const trimmedValue = inputValue.trim();
-        if (trimmedValue) {
-            router.push(`/?search=${encodeURIComponent(trimmedValue)}`);
-        } else {
-            router.push('/');
-        }
+        startTransition(() => {
+            if (trimmedValue) {
+                router.push(`/?search=${encodeURIComponent(trimmedValue)}`);
+            } else {
+                router.push('/');
+            }
+        });
     }, [inputValue, router]);
 
     // 當用戶按下 Enter 鍵時觸發搜索
@@ -51,29 +54,40 @@ const SearchBar = () => {
                 isFocused || inputValue ? 'bg-white' : 'bg-gray-200'
             )}
         >
-            {/* 搜索按鈕 */}
-            <button className="mx-2.5 cursor-pointer" onClick={handleSearch} aria-label="Search">
-                <IoIosSearch className="text-2xl" />
-            </button>
+            {!isPending && (
+                <>
+                    {/* 搜索按鈕 */}
+                    <button className="mx-2.5 cursor-pointer" onClick={handleSearch} aria-label="Search">
+                        <IoIosSearch className="text-2xl" />
+                    </button>
 
-            {/* 搜索輸入框 */}
-            <input
-                className="focus:outline-none"
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                onFocus={() => setIsFocused(true)} // 獲得焦點時更新狀態
-                onBlur={() => setIsFocused(false)} // 失去焦點時更新狀態
-                onKeyDown={handleKeyDown}
-                placeholder={isFocused ? 'Input breed name to search' : 'Click to search'} // 根據焦點狀態顯示不同的提示文字
-                aria-label="Search for dog breeds" // 無障礙標籤
-            />
+                    {/* 搜索輸入框 */}
+                    <input
+                        className="focus:outline-none"
+                        type="text"
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        onFocus={() => setIsFocused(true)} // 獲得焦點時更新狀態
+                        onBlur={() => setIsFocused(false)} // 失去焦點時更新狀態
+                        onKeyDown={handleKeyDown}
+                        placeholder={isFocused ? 'Input breed name to search' : 'Click to search'} // 根據焦點狀態顯示不同的提示文字
+                        aria-label="Search for dog breeds" // 無障礙標籤
+                    />
 
-            {/* 清除按鈕，僅在有輸入內容時顯示 */}
-            {inputValue && (
-                <button className="mx-2.5 cursor-pointer" onClick={handleClearClick} aria-label="Clear search">
-                    <MdClear className="text-2xl" />
-                </button>
+                    {/* 清除按鈕，僅在有輸入內容時顯示 */}
+                    {inputValue && (
+                        <button className="mx-2.5 cursor-pointer" onClick={handleClearClick} aria-label="Clear search">
+                            <MdClear className="text-2xl" />
+                        </button>
+                    )}
+                </>
+            )}
+
+            {/* 加載中，僅在搜尋進行中顯示 */}
+            {isPending && (
+                <div className="mx-2.5">
+                    <div className="h-5 w-5 border-2 border-gray-600 border-t-transparent rounded-full animate-spin" />
+                </div>
             )}
         </div>
     );
