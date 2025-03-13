@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import ErrorMessage from '@/components/molecules/ErrorMessage';
 import Modal from '@/components/molecules/Modal';
@@ -9,22 +9,19 @@ import Carousel from '@/components/molecules/Carousel';
 interface ImageGridProps {
     images: string[];
     altPrefix: string;
-    fallback?: ReactNode;
 }
 
 // 圖片牆
-const ImageGrid = ({ images, altPrefix, fallback }: ImageGridProps) => {
+const ImageGrid = ({ images, altPrefix }: ImageGridProps) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
     if (!images?.length) {
         return (
-            fallback || (
-                <ErrorMessage
-                    title="無法獲取圖片"
-                    description="可能是該品種名稱格式不正確或 API 暫時無法訪問。請稍後再試。"
-                />
-            )
+            <ErrorMessage
+                title="無法獲取圖片"
+                description="可能是該品種名稱格式不正確或 API 暫時無法訪問。請稍後再試。"
+            />
         );
     }
 
