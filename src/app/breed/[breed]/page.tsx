@@ -1,8 +1,10 @@
+import { Suspense } from 'react';
 import { getRandomBreedImages } from '@/services/dog-apis';
-import BreedPhotoGallery from '@/components/organisms/BreedPhotoGallery';
 import Container from '@/components/atoms/Container';
 import BreedHeader from '@/components/molecules/BreedHeader';
 import Header from '@/components/organisms/Header';
+import SkeletonGrid from '@/components/molecules/SkeletonGrid';
+import ImageGrid from '@/components/molecules/ImageGrid';
 
 export async function generateMetadata({ params }: BreedPageProps) {
     const { breed: encodedBreed } = await params;
@@ -32,7 +34,9 @@ const BreedPage = async ({ params }: BreedPageProps) => {
             </Header>
             <Container>
                 <div className="p-4">
-                    <BreedPhotoGallery breedName={breedName} images={breedImages} count={BREED_IMAGE_COUNT} />
+                    <Suspense fallback={<SkeletonGrid count={BREED_IMAGE_COUNT} />}>
+                        <ImageGrid images={breedImages} altPrefix={breedName} />
+                    </Suspense>
                 </div>
             </Container>
         </>
