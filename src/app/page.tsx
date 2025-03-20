@@ -1,15 +1,9 @@
-import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
 import Header from '@/components/organisms/Header';
 import SearchBar from '@/components/molecules/SearchBar';
 import Container from '@/components/atoms/Container';
+import BreedList from '@/components/organisms/BreedList';
 import LoadingBreedList from '@/components/organisms/LoadingBreedList';
-
-// 動態導入 BreedList ，但預加載它
-const BreedList = dynamic(() => import('@/components/organisms/BreedList'), {
-    loading: () => <LoadingBreedList />,
-    ssr: true,
-});
-
 interface HomeProps {
     searchParams: Promise<{ [key: string]: string | undefined }>;
 }
@@ -25,7 +19,9 @@ export default async function Home({ searchParams }: HomeProps) {
             </Header>
             <Container>
                 <h1 className="sr-only">Dog Breed Gallery</h1>
-                <BreedList searchQuery={search ? decodeURIComponent(search) : ''} />
+                <Suspense fallback={<LoadingBreedList />}>
+                    <BreedList searchQuery={search ? decodeURIComponent(search) : ''} />
+                </Suspense>
             </Container>
         </>
     );
